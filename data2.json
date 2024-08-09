@@ -1,0 +1,258 @@
+{
+    "socialMediaPosts": {
+        "instagramPosts": [
+            {
+                "username": "travel_lover",
+                "userId": "traveller987",
+                "image": "https://images.unsplash.com/photo-1511512578047-cdbef2ab36c7",
+                "caption": "Wanderlust in full swing! 🌍 #TravelDiaries #Wanderlust",
+                "time": "10:00 AM",
+                "dateCreated": "2024-08-05",
+                "dateModified": "2024-08-07",
+                "likes": 1120,
+                "comments": 45,
+                "location": "Paris, France",
+                "commentsList": [
+                    {
+                        "username": "paris_photographer",
+                        "comment": "Stunning capture! Paris never looked better. 📸",
+                        "time": "11:00 AM",
+                        "dateCreated": "2024-08-05"
+                    },
+                    {
+                        "username": "wanderlust_jane",
+                        "comment": "I need to visit this place! 😍",
+                        "time": "11:30 AM",
+                        "dateCreated": "2024-08-05"
+                    }
+                ],
+                "likeList": [
+                    {
+                        "username": "travel_guru",
+                        "userId": "user101",
+                        "time": "10:15 AM",
+                        "dateCreated": "2024-08-05"
+                    },
+                    {
+                        "username": "world_explorer",
+                        "userId": "user102",
+                        "time": "10:20 AM",
+                        "dateCreated": "2024-08-05"
+                    }
+                ]
+            },
+            {
+                "username": "foodie_heaven",
+                "userId": "foodie543",
+                "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+                "caption": "Best brunch spot in NYC! 🥞 #Foodie #Brunch",
+                "time": "09:00 AM",
+                "dateCreated": "2024-08-06",
+                "dateModified": "2024-08-08",
+                "likes": 895,
+                "comments": 28,
+                "location": "New York, USA",
+                "commentsList": [
+                    {
+                        "username": "nyc_eats",
+                        "comment": "Yum! That looks delicious! 😋",
+                        "time": "09:15 AM",
+                        "dateCreated": "2024-08-06"
+                    },
+                    {
+                        "username": "traveler_guy",
+                        "comment": "Adding this to my must-visit list!",
+                        "time": "09:45 AM",
+                        "dateCreated": "2024-08-06"
+                    }
+                ],
+                "likeList": [
+                    {
+                        "username": "brunchlover",
+                        "userId": "user103",
+                        "time": "09:10 AM",
+                        "dateCreated": "2024-08-06"
+                    },
+                    {
+                        "username": "city_foodie",
+                        "userId": "user104",
+                        "time": "09:25 AM",
+                        "dateCreated": "2024-08-06"
+                    }
+                ]
+            }
+        ],
+        "linkedinPosts": [
+            {
+                "username": "John Doe",
+                "userId": "johnDoe001",
+                "profileImage": "https://images.unsplash.com/photo-1511367461989-f85a21fda167",
+                "content": "Excited to announce that I’ve joined TechCorp as a Senior Software Engineer! Looking forward to collaborating with such a talented team. #NewJob #TechCorp",
+                "time": "08:30 AM",
+                "dateCreated": "2024-08-01",
+                "dateModified": "2024-08-03",
+                "likes": 340,
+                "comments": 25,
+                "shares": 8,
+                "company": "TechCorp",
+                "location": "San Francisco, USA",
+                "commentsList": [
+                    {
+                        "username": "Jane Smith",
+                        "comment": "Congratulations, John! Well deserved.",
+                        "time": "09:00 AM",
+                        "dateCreated": "2024-08-01"
+                    },
+                    {
+                        "username": "Mark Johnson",
+                        "comment": "Welcome to the team, John! Looking forward to working with you.",
+                        "time": "09:30 AM",
+                        "dateCreated": "2024-08-01"
+                    }
+                ],
+                "likeList": [
+                    {
+                        "username": "tech_guru",
+                        "userId": "user105",
+                        "time": "08:45 AM",
+                        "dateCreated": "2024-08-01"
+                    },
+                    {
+                        "username": "developer_mike",
+                        "userId": "user106",
+                        "time": "09:15 AM",
+                        "dateCreated": "2024-08-01"
+                    }
+                ]
+            },
+            {
+                "username": "Lisa Wang",
+                "userId": "lisaWang789",
+                "profileImage": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+                "content": "Completed an intensive Machine Learning course, and excited to apply these new skills at work! #Learning #Growth",
+                "time": "02:00 PM",
+                "dateCreated": "2024-08-03",
+                "dateModified": "2024-08-05",
+                "likes": 420,
+                "comments": 18,
+                "shares": 3,
+                "company": "InnovateTech",
+                "location": "Boston, USA",
+                "commentsList": [
+                    {
+                        "username": "Michael Lee",
+                        "comment": "Great job, Lisa! Can’t wait to see what you’ll accomplish next.",
+                        "time": "02:15 PM",
+                        "dateCreated": "2024-08-03"
+                    },
+                    {
+                        "username": "Emily Turner",
+                        "comment": "Inspiring! Keep up the great work.",
+                        "time": "02:45 PM",
+                        "dateCreated": "2024-08-03"
+                    }
+                ],
+                "likeList": [
+                    {
+                        "username": "data_scientist",
+                        "userId": "user107",
+                        "time": "02:20 PM",
+                        "dateCreated": "2024-08-03"
+                    },
+                    {
+                        "username": "ai_enthusiast",
+                        "userId": "user108",
+                        "time": "02:35 PM",
+                        "dateCreated": "2024-08-03"
+                    }
+                ]
+            }
+        ],
+        "twitterPosts": [
+            {
+                "username": "@TechGuru",
+                "userId": "techGuru123",
+                "profileImage": "https://images.unsplash.com/photo-1511367461989-f85a21fda167",
+                "content": "Exciting news from the world of AI! A breakthrough in machine learning could change the way we interact with technology. #AI #TechNews",
+                "time": "11:45 AM",
+                "dateCreated": "2024-08-04",
+                "dateModified": "2024-08-06",
+                "likes": 890,
+                "retweets": 120,
+                "replies": 60,
+                "location": "Silicon Valley, USA",
+                "hashtags": ["#AI", "#TechNews"],
+                "commentsList": [
+                    {
+                        "username": "@AI_Enthusiast",
+                        "comment": "This is huge! Can't wait to see where this leads.",
+                        "time": "12:00 PM",
+                        "dateCreated": "2024-08-04"
+                    },
+                    {
+                        "username": "@CoderLife",
+                        "comment": "The future is now! 🚀",
+                        "time": "12:30 PM",
+                        "dateCreated": "2024-08-04"
+                    }
+                ],
+                "likeList": [
+                    {
+                        "username": "@MachineLearningPro",
+                        "userId": "user109",
+                        "time": "11:50 AM",
+                        "dateCreated": "2024-08-04"
+                    },
+                    {
+                        "username": "@TechSavvy",
+                        "userId": "user110",
+                        "time": "11:55 AM",
+                        "dateCreated": "2024-08-04"
+                    }
+                ]
+            },
+            {
+                "username": "@NatureLover",
+                "userId": "natureLover456",
+                "profileImage": "https://images.unsplash.com/photo-1546525848-3ce03ca516f6",
+                "content": "Spent the weekend hiking through the mountains. Nothing beats the beauty of nature! 🌲 #Nature #Hiking",
+                "time": "04:00 PM",
+                "dateCreated": "2024-08-02",
+                "dateModified": "2024-08-04",
+                "likes": 670,
+                "retweets": 80,
+                "replies": 40,
+                "location": "Rocky Mountains, USA",
+                "hashtags": ["#Nature", "#Hiking"],
+                "commentsList": [
+                    {
+                        "username": "@MountainMan",
+                        "comment": "That sounds amazing! Nature is truly healing.",
+                        "time": "04:15 PM",
+                        "dateCreated": "2024-08-02"
+                    },
+                    {
+                        "username": "@WanderlustWoman",
+                        "comment": "I love hiking! Where exactly did you go?",
+                        "time": "04:45 PM",
+                        "dateCreated": "2024-08-02"
+                    }
+                ],
+                "likeList": [
+                    {
+                        "username": "@HikeEnthusiast",
+                        "userId": "user111",
+                        "time": "04:10 PM",
+                        "dateCreated": "2024-08-02"
+                    },
+                    {
+                        "username": "@NatureFreak",
+                        "userId": "user112",
+                        "time": "04:30 PM",
+                        "dateCreated": "2024-08-02"
+                    }
+                ]
+            }
+        ]
+    }
+}
