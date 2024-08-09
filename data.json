@@ -1,0 +1,23 @@
+{
+    "instagramPosts": [
+        {
+            "username": "InstagramUser",
+            "image": "https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w300/2023/09/instagram-image-size.jpg",
+            "caption": "Caption for the Instagram post..."
+        }
+    ],
+    "linkedinPosts": [
+        {
+            "username": "LinkedInUser",
+            "profileImage": "https://png.pngtree.com/png-vector/20231019/ourmid/pngtree-user-profile-avatar-png-image_10211467.png",
+            "content": "This is a LinkedIn post. It typically contains professional content or updates about a user's work life."
+        }
+    ],
+    "twitterPosts": [
+        {
+            "username": "@TwitterUser",
+            "profileImage": "https://i0.wp.com/static.vecteezy.com/system/resources/previews/029/271/069/original/avatar-profile-icon-in-flat-style-female-user-profile-illustration-on-isolated-background-women-profile-sign-business-concept-vector.jpg?ssl=1",
+            "content": "This is a tweet. It contains short and concise content, often with a focus on news or opinions."
+        }
+    ]
+}
