@@ -210,16 +210,28 @@
             background-color: #fff;
             border-top: 1px solid #dbdbdb;
         }
-        .post-actions {
+.post-actions {
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
     border-top: 1px solid #e1e8ed;
 }
 
-.post-actions img {
+.action-item {
+    display: flex;
+    align-items: center;
+}
+
+.action-item img {
     width: 24px;
+    height: 24px;
     cursor: pointer;
+    margin-right: 5px;
+}
+
+.action-item span {
+    font-size: 14px;
+    color: #657786;
 }
     </style>
 </head>
@@ -286,12 +298,21 @@
             const feed = document.getElementById('feed');
             const socialMediaPosts = data.socialMediaPosts;
 
-            function createPostActions() {
+            function createPostActions(likes, comments, shares) {
                 return `
                     <div class="post-actions">
-                        <img src="https://img.icons8.com/ios-filled/50/000000/thumb-up.png" alt="Like">
-                        <img src="https://img.icons8.com/ios-filled/50/000000/comments.png" alt="Comment">
-                        <img src="https://img.icons8.com/ios-filled/50/000000/share.png" alt="Share">
+                        <div class="action-item">
+                            <img src="https://img.icons8.com/ios-filled/50/000000/thumb-up.png" alt="Like">
+                            <span>${likes}</span>
+                        </div>
+                        <div class="action-item">
+                            <img src="https://img.icons8.com/ios-filled/50/000000/comments.png" alt="Comment">
+                            <span>${comments}</span>
+                        </div>
+                        <div class="action-item">
+                            <img src="https://img.icons8.com/ios-filled/50/000000/share.png" alt="Share">
+                            <span>${shares || ''}</span>
+                        </div>
                     </div>
                 `;
             }
@@ -305,10 +326,9 @@
                     <div class="post-info">
                         <h3>${post.username}</h3>
                         <p>${post.caption}</p>
-                        <p>Likes: ${post.likes} | Comments: ${post.comments}</p>
                         <p>Location: ${post.location}</p>
                     </div>
-                    ${createPostActions()}
+                    ${createPostActions(post.likes, post.comments)}
                 `;
                 feed.appendChild(postDiv);
             });
@@ -326,10 +346,9 @@
                         <p>${post.content}</p>
                     </div>
                     <div class="post-info">
-                        <p>Likes: ${post.likes} | Comments: ${post.comments} | Shares: ${post.shares}</p>
                         <p>Company: ${post.company} | Location: ${post.location}</p>
                     </div>
-                    ${createPostActions()}
+                    ${createPostActions(post.likes, post.comments, post.shares)}
                 `;
                 feed.appendChild(postDiv);
             });
@@ -347,11 +366,10 @@
                         <p>${post.content}</p>
                     </div>
                     <div class="post-info">
-                        <p>Likes: ${post.likes} | Retweets: ${post.retweets} | Replies: ${post.replies}</p>
                         <p>Location: ${post.location}</p>
                         <p>Hashtags: ${post.hashtags.join(', ')}</p>
                     </div>
-                    ${createPostActions()}
+                    ${createPostActions(post.likes, post.replies, post.retweets)}
                 `;
                 feed.appendChild(postDiv);
             });
