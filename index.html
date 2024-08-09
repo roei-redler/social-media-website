@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Combined Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #dbdbdb;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-icons img {
+            width: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .feed {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        /* Instagram Post */
+        .instagram-post {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .instagram-post img {
+            width: 100%;
+            display: block;
+        }
+
+        .instagram-post .post-info {
+            padding: 10px;
+        }
+
+        .instagram-post .post-info h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .instagram-post .post-info p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* LinkedIn Post */
+        .linkedin-post {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #d3d3d3;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        .linkedin-post .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .linkedin-post .post-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .linkedin-post .post-header h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .linkedin-post .post-content {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .linkedin-post .post-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .linkedin-post .post-actions img {
+            width: 24px;
+            cursor: pointer;
+        }
+
+        /* Twitter Post */
+        .twitter-post {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #e1e8ed;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        .twitter-post .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .twitter-post .post-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .twitter-post .post-header h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #1da1f2;
+        }
+
+        .twitter-post .post-content {
+            font-size: 14px;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .twitter-post .post-actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+            border-top: 1px solid #e1e8ed;
+            padding-top: 10px;
+        }
+
+        .twitter-post .post-actions img {
+            width: 24px;
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #fff;
+            border-top: 1px solid #dbdbdb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Social Feed</div>
+        <div class="nav-icons">
+            <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Home">
+            <img src="https://img.icons8.com/ios-filled/50/000000/search.png" alt="Search">
+            <img src="https://img.icons8.com/ios-filled/50/000000/appointment-reminders.png" alt="Notifications">
+            <img src="https://img.icons8.com/ios-filled/50/000000/gender-neutral-user.png" alt="Profile">
+        </div>
+    </nav>
+
+    <!-- Feed Section -->
+    <div class="feed" id="feed">
+
+        <!-- Instagram Post -->
+        <!-- Posts will be loaded here dynamically -->
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Combined Feed by [Your Name]</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const feed = document.getElementById('feed');
+
+                    // Render Instagram Posts
+                    data.instagramPosts.forEach(post => {
+                        const postDiv = document.createElement('div');
+                        postDiv.className = 'instagram-post';
+                        postDiv.innerHTML = `
+                            <img src="${post.image}" alt="Instagram Post Image">
+                            <div class="post-info">
+                                <h3>${post.username}</h3>
+                                <p>${post.caption}</p>
+                            </div>
+                        `;
+                        feed.appendChild(postDiv);
+                    });
+
+                    // Render LinkedIn Posts
+                    data.linkedinPosts.forEach(post => {
+                        const postDiv = document.createElement('div');
+                        postDiv.className = 'linkedin-post';
+                        postDiv.innerHTML = `
+                            <div class="post-header">
+                                <img src="${post.profileImage}" alt="Profile Picture">
+                                <h3>${post.username}</h3>
+                            </div>
+                            <div class="post-content">
+                                <p>${post.content}</p>
+                            </div>
+                            <div class="post-actions">
+                                <img src="https://img.icons8.com/ios-filled/50/000000/thumb-up.png" alt="Like">
+                                <img src="https://img.icons8.com/ios-filled/50/000000/comments.png" alt="Comment">
+                                <img src="https://img.icons8.com/ios-filled/50/000000/share.png" alt="Share">
+                            </div>
+                        `;
+                        feed.appendChild(postDiv);
+                    });
+
+                    // Render Twitter Posts
+                    data.twitterPosts.forEach(post => {
+                        const postDiv = document.createElement('div');
+                        postDiv.className = 'twitter-post';
+                        postDiv.innerHTML = `
+                            <div class="post-header">
+                                <img src="${post.profileImage}" alt="Profile Picture">
+                                <h3>${post.username}</h3>
+                            </div>
+                            <div class="post-content">
+                                <p>${post.content}</p>
+                            </div>
+                            <div class="post-actions">
+                                <img src="https://img.icons8.com/ios-filled/50/1da1f2/retweet.png" alt="Retweet">
+                                <img src="https://img.icons8.com/ios-filled/50/1da1f2/like.png" alt="Like">
+                                <img src="https://img.icons8.com/ios-filled/50/1da1f2/share.png" alt="Share">
+                            </div>
+                        `;
+                        feed.appendChild(postDiv);
+                    });
+                });
+        });
+    </script>
+</body>
+</html>
