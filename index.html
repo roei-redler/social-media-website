@@ -5,6 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Media Combined Feed</title>
     <style>
+    /* Add this to your existing CSS */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.comment {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.comment-user {
+    font-weight: bold;
+}
+
+.comment-text {
+    margin-top: 5px;
+}
+
+.comment-meta {
+    font-size: 0.8em;
+    color: #888;
+}
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -163,6 +210,17 @@
             background-color: #fff;
             border-top: 1px solid #dbdbdb;
         }
+        .post-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #e1e8ed;
+}
+
+.post-actions img {
+    width: 24px;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -191,69 +249,141 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('data.json')
-                .then(response => response.json())
-                .then(data => {
-                    const feed = document.getElementById('feed');
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('commentsModal');
+    const closeBtn = modal.querySelector('.close');
+    const commentsList = document.getElementById('commentsList');
 
-                    // Render Instagram Posts
-                    data.instagramPosts.forEach(post => {
-                        const postDiv = document.createElement('div');
-                        postDiv.className = 'instagram-post';
-                        postDiv.innerHTML = `
-                            <img src="${post.image}" alt="Instagram Post Image">
-                            <div class="post-info">
-                                <h3>${post.username}</h3>
-                                <p>${post.caption}</p>
-                            </div>
-                        `;
-                        feed.appendChild(postDiv);
-                    });
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
 
-                    // Render LinkedIn Posts
-                    data.linkedinPosts.forEach(post => {
-                        const postDiv = document.createElement('div');
-                        postDiv.className = 'linkedin-post';
-                        postDiv.innerHTML = `
-                            <div class="post-header">
-                                <img src="${post.profileImage}" alt="Profile Picture">
-                                <h3>${post.username}</h3>
-                            </div>
-                            <div class="post-content">
-                                <p>${post.content}</p>
-                            </div>
-                            <div class="post-actions">
-                                <img src="https://img.icons8.com/ios-filled/50/000000/thumb-up.png" alt="Like">
-                                <img src="https://img.icons8.com/ios-filled/50/000000/comments.png" alt="Comment">
-                                <img src="https://img.icons8.com/ios-filled/50/000000/share.png" alt="Share">
-                            </div>
-                        `;
-                        feed.appendChild(postDiv);
-                    });
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
-                    // Render Twitter Posts
-                    data.twitterPosts.forEach(post => {
-                        const postDiv = document.createElement('div');
-                        postDiv.className = 'twitter-post';
-                        postDiv.innerHTML = `
-                            <div class="post-header">
-                                <img src="${post.profileImage}" alt="Profile Picture">
-                                <h3>${post.username}</h3>
-                            </div>
-                            <div class="post-content">
-                                <p>${post.content}</p>
-                            </div>
-                            <div class="post-actions">
-                                <img src="https://img.icons8.com/ios-filled/50/1da1f2/retweet.png" alt="Retweet">
-                                <img src="https://img.icons8.com/ios-filled/50/1da1f2/like.png" alt="Like">
-                                <img src="https://img.icons8.com/ios-filled/50/1da1f2/share.png" alt="Share">
-                            </div>
-                        `;
-                        feed.appendChild(postDiv);
-                    });
-                });
+    function showComments(comments) {
+        commentsList.innerHTML = '';
+        comments.forEach(comment => {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'comment';
+            commentDiv.innerHTML = `
+                <div class="comment-user">${comment.username}</div>
+                <div class="comment-text">${comment.comment}</div>
+                <div class="comment-meta">${comment.time} · ${comment.dateCreated}</div>
+            `;
+            commentsList.appendChild(commentDiv);
         });
-    </script>
+        modal.style.display = "block";
+    }
+
+
+      fetch('https://roei-redler.github.io/social-media-website/data2.json')
+        .then(response => response.json())
+        .then(data => {
+            const feed = document.getElementById('feed');
+            const socialMediaPosts = data.socialMediaPosts;
+
+            function createPostActions() {
+                return `
+                    <div class="post-actions">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/thumb-up.png" alt="Like">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/comments.png" alt="Comment">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/share.png" alt="Share">
+                    </div>
+                `;
+            }
+
+            // Render Instagram Posts
+            socialMediaPosts.instagramPosts.forEach(post => {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'instagram-post';
+                postDiv.innerHTML = `
+                    <img src="${post.image}" alt="Instagram Post Image">
+                    <div class="post-info">
+                        <h3>${post.username}</h3>
+                        <p>${post.caption}</p>
+                        <p>Likes: ${post.likes} | Comments: ${post.comments}</p>
+                        <p>Location: ${post.location}</p>
+                    </div>
+                    ${createPostActions()}
+                `;
+                feed.appendChild(postDiv);
+            });
+
+            // Render LinkedIn Posts
+            socialMediaPosts.linkedinPosts.forEach(post => {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'linkedin-post';
+                postDiv.innerHTML = `
+                    <div class="post-header">
+                        <img src="${post.profileImage}" alt="Profile Picture">
+                        <h3>${post.username}</h3>
+                    </div>
+                    <div class="post-content">
+                        <p>${post.content}</p>
+                    </div>
+                    <div class="post-info">
+                        <p>Likes: ${post.likes} | Comments: ${post.comments} | Shares: ${post.shares}</p>
+                        <p>Company: ${post.company} | Location: ${post.location}</p>
+                    </div>
+                    ${createPostActions()}
+                `;
+                feed.appendChild(postDiv);
+            });
+
+            // Render Twitter Posts
+            socialMediaPosts.twitterPosts.forEach(post => {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'twitter-post';
+                postDiv.innerHTML = `
+                    <div class="post-header">
+                        <img src="${post.profileImage}" alt="Profile Picture">
+                        <h3>${post.username}</h3>
+                    </div>
+                    <div class="post-content">
+                        <p>${post.content}</p>
+                    </div>
+                    <div class="post-info">
+                        <p>Likes: ${post.likes} | Retweets: ${post.retweets} | Replies: ${post.replies}</p>
+                        <p>Location: ${post.location}</p>
+                        <p>Hashtags: ${post.hashtags.join(', ')}</p>
+                    </div>
+                    ${createPostActions()}
+                `;
+                feed.appendChild(postDiv);
+            });
+ // Add this part to handle comment clicks
+            feed.addEventListener('click', function(e) {
+                if (e.target.alt === 'Comment') {
+                    const postElement = e.target.closest('.instagram-post, .linkedin-post, .twitter-post');
+                    let comments;
+                    if (postElement.classList.contains('instagram-post')) {
+                        const postIndex = Array.from(feed.children).indexOf(postElement);
+                        comments = socialMediaPosts.instagramPosts[postIndex].commentsList;
+                    } else if (postElement.classList.contains('linkedin-post')) {
+                        const postIndex = Array.from(feed.children).filter(el => el.classList.contains('linkedin-post')).indexOf(postElement);
+                        comments = socialMediaPosts.linkedinPosts[postIndex].commentsList;
+                    } else if (postElement.classList.contains('twitter-post')) {
+                        const postIndex = Array.from(feed.children).filter(el => el.classList.contains('twitter-post')).indexOf(postElement);
+                        comments = socialMediaPosts.twitterPosts[postIndex].commentsList;
+                    }
+                    showComments(comments);
+                }
+            });
+        })
+        .catch(error => console.error('Error:', error));
+});
+</script>
+<!-- Add this just before the closing </body> tag -->
+<div id="commentsModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Comments</h2>
+        <div id="commentsList"></div>
+    </div>
+</div>
 </body>
 </html>
