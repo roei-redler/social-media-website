@@ -280,10 +280,10 @@ html, body {
 /* Add this to your existing CSS */
 .comments-slider {
     position: fixed;
-    bottom: -33.33vh; /* Start off-screen */
+    bottom: -43.33vh; /* Start off-screen */
     left: 0;
     width: 100%;
-    height: 33.33vh; /* 1/3 of the viewport height */
+    height: 43.33vh; /* 1/3 of the viewport height */
     background-color: #fff;
     transition: bottom 0.3s ease-out;
     z-index: 1000;
@@ -312,23 +312,48 @@ html, body {
     cursor: pointer;
 }
 
+/* Comment Structure */
 .comment {
-    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
     padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.comment-profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-user-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .comment-user {
     font-weight: bold;
-}
-
-.comment-text {
-    margin-top: 5px;
+    font-size: 14px;
 }
 
 .comment-meta {
-    font-size: 0.8em;
-    color: #888;
+    font-size: 12px;
+    color: #8e8e8e;
 }
+
+.comment-text {
+    font-size: 14px;
+    margin-left: 42px; /* Aligns with the username */
+    margin-top: 5px;
+}
+
     </style>
 </head>
 <body>
@@ -365,21 +390,25 @@ html, body {
         commentsSlider.classList.remove('active');
     }
 
-    function showComments(comments) {
-        commentsList.innerHTML = '';
-        comments.forEach(comment => {
-            const commentDiv = document.createElement('div');
-            commentDiv.className = 'comment';
-            commentDiv.innerHTML = `
-                <div class="comment-user">${comment.username}</div>
-                <div class="comment-text">${comment.comment}</div>
-                <div class="comment-meta">${comment.time} · ${comment.dateCreated}</div>
-            `;
-            commentsList.appendChild(commentDiv);
-        });
-        commentsSlider.classList.add('active');
-    }
-
+   function showComments(comments) {
+    commentsList.innerHTML = '';
+    comments.forEach(comment => {
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'comment';
+        commentDiv.innerHTML = `
+            <div class="comment-header">
+                <img src="${comment.profileImage || comment.image}" alt="${comment.username}" class="comment-profile-pic">
+                <div class="comment-user-info">
+                    <div class="comment-user">${comment.username}</div>
+                    <div class="comment-meta">${comment.time} · ${comment.dateCreated}</div>
+                </div>
+            </div>
+            <div class="comment-text">${comment.comment}</div>
+        `;
+        commentsList.appendChild(commentDiv);
+    });
+    commentsSlider.classList.add('active');
+}
 
       fetch('https://roei-redler.github.io/social-media-website/data2.json')
         .then(response => response.json())
@@ -412,7 +441,7 @@ socialMediaPosts.instagramPosts.forEach(post => {
     postDiv.className = 'instagram-post';
     postDiv.innerHTML = `
         <div class="post-header">
-            <img src="${post.profileImage || 'default-profile-image.jpg'}" alt="Profile Picture" class="profile-pic">
+            <img src="${post.profileImage || post.image}" alt="Profile Picture" class="profile-pic">
             <div class="user-info">
                 <h3 class="username">${post.username}</h3>
                 <p class="location">${post.location}</p>
