@@ -12,20 +12,57 @@
                 "likes": 1120,
                 "comments": 45,
                 "location": "Paris, France",
-                "commentsList": [
-                    {
-                        "username": "paris_photographer",
-                        "comment": "Stunning capture! Paris never looked better. 📸",
-                        "time": "11:00 AM",
-                        "dateCreated": "2024-08-05"
-                    },
-                    {
-                        "username": "wanderlust_jane",
-                        "comment": "I need to visit this place! 😍",
-                        "time": "11:30 AM",
-                        "dateCreated": "2024-08-05"
-                    }
-                ],
+               "commentsList": [
+    {
+        "username": "paris_photographer",
+        "comment": "Stunning capture! Paris never looked better. 📸",
+        "time": "11:00 AM",
+        "dateCreated": "2024-08-05"
+    },
+    {
+        "username": "wanderlust_jane",
+        "comment": "I need to visit this place! 😍",
+        "time": "11:30 AM",
+        "dateCreated": "2024-08-05"
+    },
+    {
+        "username": "travel_bug",
+        "comment": "The lighting in this photo is perfect! 🌅",
+        "time": "12:00 PM",
+        "dateCreated": "2024-08-05"
+    },
+    {
+        "username": "city_lights",
+        "comment": "Paris is always a good idea. 🥂",
+        "time": "12:15 PM",
+        "dateCreated": "2024-08-05"
+    },
+    {
+        "username": "fashionista_fr",
+        "comment": "The vibe is just amazing! ✨",
+        "time": "12:45 PM",
+        "dateCreated": "2024-08-05"
+    },
+    {
+        "username": "history_buff",
+        "comment": "I love the historical feel of this shot. 📜",
+        "time": "1:00 PM",
+        "dateCreated": "2024-08-05"
+    },
+    {
+        "username": "foodie_diaries",
+        "comment": "Now I’m craving a croissant. 🥐",
+        "time": "1:30 PM",
+        "dateCreated": "2024-08-05"
+    },
+    {
+        "username": "art_enthusiast",
+        "comment": "This photo is a piece of art! 🎨",
+        "time": "2:00 PM",
+        "dateCreated": "2024-08-05"
+    }
+]
+,
                 "likeList": [
                     {
                         "username": "travel_guru",
