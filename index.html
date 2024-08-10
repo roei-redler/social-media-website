@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Media Combined Feed</title>
     <style>
-    /* Add this to your existing CSS */
+  /* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -35,6 +35,7 @@
     cursor: pointer;
 }
 
+/* Comment Styles */
 .comment {
     border-bottom: 1px solid #eee;
     padding: 10px 0;
@@ -52,168 +53,106 @@
     font-size: 0.8em;
     color: #888;
 }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
-        }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 20px;
-            background-color: #fff;
-            border-bottom: 1px solid #dbdbdb;
-        }
+/* General Styles */
+body, html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    overflow: auto; /* Allows scrolling */
+    height: 100%; /* Ensures the body and html cover the entire viewport */
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
+/* Hides the scroll bar for webkit browsers (e.g., Chrome, Safari) */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none;
+}
 
-        .nav-icons img {
-            width: 24px;
-            margin: 0 10px;
-            cursor: pointer;
-        }
+/* Hides the scroll bar for Internet Explorer and Edge */
+html, body {
+    -ms-overflow-style: none;
+}
 
-        .feed {
-            max-width: 800px;
-            margin: 20px auto;
-        }
+/* Hides the scroll bar for Firefox */
+html, body {
+    scrollbar-width: none;
+}
 
-        /* Instagram Post */
-        .instagram-post {
-            margin-bottom: 20px;
-            background-color: #fff;
-            border: 1px solid #dbdbdb;
-            border-radius: 10px;
-            overflow: hidden;
-        }
 
-        .instagram-post img {
-            width: 100%;
-            display: block;
-        }
 
-        .instagram-post .post-info {
-            padding: 10px;
-        }
 
-        .instagram-post .post-info h3 {
-            margin: 0;
-            font-size: 16px;
-        }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #dbdbdb;
+}
 
-        .instagram-post .post-info p {
-            margin: 5px 0 0 0;
-            font-size: 14px;
-            color: #555;
-        }
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
 
-        /* LinkedIn Post */
-        .linkedin-post {
-            margin-bottom: 20px;
-            background-color: #fff;
-            border: 1px solid #d3d3d3;
-            border-radius: 10px;
-            overflow: hidden;
-            padding: 15px;
-        }
+.nav-icons img {
+    width: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+}
 
-        .linkedin-post .post-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+.feed {
+    max-width: 800px;
+    margin: 20px auto;
+}
 
-        .linkedin-post .post-header img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
+/* Instagram Post Styles */
+.instagram-post {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    margin-bottom: 60px;
+}
 
-        .linkedin-post .post-header h3 {
-            margin: 0;
-            font-size: 16px;
-        }
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+}
 
-        .linkedin-post .post-content {
-            font-size: 14px;
-            color: #333;
-        }
+.profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
 
-        .linkedin-post .post-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
 
-        .linkedin-post .post-actions img {
-            width: 24px;
-            cursor: pointer;
-        }
+.username {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+}
 
-        /* Twitter Post */
-        .twitter-post {
-            margin-bottom: 20px;
-            background-color: #fff;
-            border: 1px solid #e1e8ed;
-            border-radius: 10px;
-            overflow: hidden;
-            padding: 15px;
-        }
+.location {
+    font-size: 12px;
+    color: #8e8e8e;
+    margin: 0;
+}
 
-        .twitter-post .post-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+.post-image {
+    width: 100%;
+    height: auto;
+}
 
-        .twitter-post .post-header img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .twitter-post .post-header h3 {
-            margin: 0;
-            font-size: 16px;
-            color: #1da1f2;
-        }
-
-        .twitter-post .post-content {
-            font-size: 14px;
-            color: #333;
-            margin-top: 5px;
-        }
-
-        .twitter-post .post-actions {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 10px;
-            border-top: 1px solid #e1e8ed;
-            padding-top: 10px;
-        }
-
-        .twitter-post .post-actions img {
-            width: 24px;
-            cursor: pointer;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #fff;
-            border-top: 1px solid #dbdbdb;
-        }
 .post-actions {
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
+    padding: 8px 16px;
     border-top: 1px solid #e1e8ed;
 }
 
@@ -232,6 +171,163 @@
 .action-item span {
     font-size: 14px;
     color: #657786;
+}
+
+.post-caption {
+    padding: 0 16px 16px;
+    font-size: 14px;
+}
+
+/* LinkedIn Post Styles */
+.linkedin-post {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.linkedin-post .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.linkedin-post .post-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.linkedin-post .post-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.linkedin-post .post-content {
+    font-size: 14px;
+    color: #333;
+}
+
+.linkedin-post .post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.linkedin-post .post-actions img {
+    width: 24px;
+    cursor: pointer;
+}
+
+/* Twitter Post Styles */
+.twitter-post {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #e1e8ed;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.twitter-post .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.twitter-post .post-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.twitter-post .post-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #1da1f2;
+}
+
+.twitter-post .post-content {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+}
+
+.twitter-post .post-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    border-top: 1px solid #e1e8ed;
+    padding-top: 10px;
+}
+
+.twitter-post .post-actions img {
+    width: 24px;
+    cursor: pointer;
+}
+
+/* Footer Styles */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #dbdbdb;
+}
+/* Add this to your existing CSS */
+.comments-slider {
+    position: fixed;
+    bottom: -33.33vh; /* Start off-screen */
+    left: 0;
+    width: 100%;
+    height: 33.33vh; /* 1/3 of the viewport height */
+    background-color: #fff;
+    transition: bottom 0.3s ease-out;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.comments-slider.active {
+    bottom: 0;
+}
+
+.slider-content {
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.close-slider {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.comment {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.comment-user {
+    font-weight: bold;
+}
+
+.comment-text {
+    margin-top: 5px;
+}
+
+.comment-meta {
+    font-size: 0.8em;
+    color: #888;
 }
     </style>
 </head>
@@ -262,18 +358,11 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('commentsModal');
-    const closeBtn = modal.querySelector('.close');
+    const commentsSlider = document.getElementById('commentsSlider');
+    const closeSlider = commentsSlider.querySelector('.close-slider');
     const commentsList = document.getElementById('commentsList');
-
-    closeBtn.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+ closeSlider.onclick = function() {
+        commentsSlider.classList.remove('active');
     }
 
     function showComments(comments) {
@@ -288,7 +377,7 @@
             `;
             commentsList.appendChild(commentDiv);
         });
-        modal.style.display = "block";
+        commentsSlider.classList.add('active');
     }
 
 
@@ -317,21 +406,26 @@
                 `;
             }
 
-            // Render Instagram Posts
-            socialMediaPosts.instagramPosts.forEach(post => {
-                const postDiv = document.createElement('div');
-                postDiv.className = 'instagram-post';
-                postDiv.innerHTML = `
-                    <img src="${post.image}" alt="Instagram Post Image">
-                    <div class="post-info">
-                        <h3>${post.username}</h3>
-                        <p>${post.caption}</p>
-                        <p>Location: ${post.location}</p>
-                    </div>
-                    ${createPostActions(post.likes, post.comments)}
-                `;
-                feed.appendChild(postDiv);
-            });
+// Render Instagram Posts
+socialMediaPosts.instagramPosts.forEach(post => {
+    const postDiv = document.createElement('div');
+    postDiv.className = 'instagram-post';
+    postDiv.innerHTML = `
+        <div class="post-header">
+            <img src="${post.profileImage || 'default-profile-image.jpg'}" alt="Profile Picture" class="profile-pic">
+            <div class="user-info">
+                <h3 class="username">${post.username}</h3>
+                <p class="location">${post.location}</p>
+            </div>
+        </div>
+        <img src="${post.image}" alt="Instagram Post Image" class="post-image">
+        ${createPostActions(post.likes, post.comments)}
+        <div class="post-caption">
+            <p><strong>${post.username}</strong> ${post.caption}</p>
+        </div>
+    `;
+    feed.appendChild(postDiv);
+});
 
             // Render LinkedIn Posts
             socialMediaPosts.linkedinPosts.forEach(post => {
@@ -373,7 +467,7 @@
                 `;
                 feed.appendChild(postDiv);
             });
- // Add this part to handle comment clicks
+  // Add this part to handle comment clicks
             feed.addEventListener('click', function(e) {
                 if (e.target.alt === 'Comment') {
                     const postElement = e.target.closest('.instagram-post, .linkedin-post, .twitter-post');
@@ -395,11 +489,13 @@
         .catch(error => console.error('Error:', error));
 });
 </script>
-<!-- Add this just before the closing </body> tag -->
-<div id="commentsModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Comments</h2>
+<!-- Replace the existing modal div with this -->
+<div id="commentsSlider" class="comments-slider">
+    <div class="slider-content">
+        <div class="slider-header">
+            <h2>Comments</h2>
+            <span class="close-slider">&times;</span>
+        </div>
         <div id="commentsList"></div>
     </div>
 </div>
