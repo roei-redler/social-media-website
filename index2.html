@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Feed Clone with Image Popup</title>
+    <!-- Flickity CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .feed-container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .post {
+            background: #fff;
+            border: 1px solid #dbdbdb;
+            margin-bottom: 20px;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-header {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .post-header img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+        }
+
+        .post-header .username {
+            font-weight: bold;
+        }
+
+        .post-carousel {
+            position: relative;
+        }
+
+        .post-carousel img {
+            width: 100%;
+            display: block;
+            cursor: pointer;
+        }
+
+        .post-footer {
+            padding: 16px;
+        }
+
+        .post-footer .likes, .post-footer .caption {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .post-footer .caption {
+            font-weight: bold;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup img {
+            max-width: 90%;
+            max-height: 90%;
+            border: none;
+            transition: transform 0.3s ease;
+            transform: scale(0.8);
+        }
+
+        .popup.show img {
+            transform: scale(1);
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            border: none;
+            font-size: 24px;
+            padding: 5px 10px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: white;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+        }
+
+        .modal-content {
+            padding: 20px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            float: right;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   <div class="feed-container" id="feedContainer">
+    <!-- Posts will be dynamically inserted here -->
+   </div>
+
+    <!-- Comments Modal -->
+    <div id="commentsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="comments"></div>
+        </div>
+    </div>
+
+    <!-- Image Popup -->
+    <div class="popup" id="imagePopup">
+        <button class="close-popup" id="closePopup">&times;</button>
+        <img src="" alt="Popup Image" id="popupImage">
+    </div>
+
+    <!-- Flickity JS -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+    <!-- Popup Script -->
+    <script>
+        // Select the popup elements
+        const popup = document.getElementById('imagePopup');
+        const popupImage = document.getElementById('popupImage');
+        const closePopup = document.getElementById('closePopup');
+
+        // Add click event listener to close popup
+        closePopup.addEventListener('click', function() {
+            popup.classList.remove('show');
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 300); // Wait for the animation to finish
+        });
+
+        // Add event listener to popup background to close when clicking outside image
+        popup.addEventListener('click', function(e) {
+            if (e.target !== popupImage && e.target !== closePopup) {
+                closePopup.click();
+            }
+        });
+
+        // Function to open comments modal
+        function openComments(comments) {
+            const commentsModal = document.getElementById('commentsModal');
+            const commentsContainer = commentsModal.querySelector('.comments');
+            commentsContainer.innerHTML = ''; // Clear existing comments
+
+            comments.forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+
+                const commentUser = document.createElement('strong');
+                commentUser.textContent = comment.username + ': ';
+
+                const commentText = document.createElement('span');
+                commentText.textContent = comment.comment;
+
+                commentElement.appendChild(commentUser);
+                commentElement.appendChild(commentText);
+
+                commentsContainer.appendChild(commentElement);
+            });
+
+            commentsModal.style.display = 'block';
+        }
+
+        // Function to close comments modal
+        const closeModalBtn = document.querySelector('.close-btn');
+        closeModalBtn.addEventListener('click', () => {
+            document.getElementById('commentsModal').style.display = 'none';
+        });
+
+        // Fetch and display posts
+        document.addEventListener("DOMContentLoaded", () => {
+            const feedContainer = document.getElementById('feedContainer');
+
+            fetch('https://roei-redler.github.io/social-media-website/data3.json')
+                .then(response => response.json())
+                .then(data => {
+                    const posts = data.socialMediaPosts.instagramPosts;
+                    posts.forEach(post => {
+                        // Create post elements
+                        const postElement = document.createElement('div');
+                        postElement.classList.add('post');
+
+                        const postHeader = document.createElement('div');
+                        postHeader.classList.add('post-header');
+
+                        const profileImage = document.createElement('img');
+                        profileImage.src = post.profileImage;
+                        profileImage.alt = 'Profile Picture';
+
+                        const userInfo = document.createElement('div');
+                        userInfo.classList.add('user-info');
+
+                        const username = document.createElement('div');
+                        username.classList.add('username');
+                        username.textContent = post.username;
+
+                        const location = document.createElement('div');
+                        location.classList.add('location');
+                        location.textContent = post.location;
+
+                        userInfo.appendChild(username);
+                        userInfo.appendChild(location);
+
+                        postHeader.appendChild(profileImage);
+                        postHeader.appendChild(userInfo);
+
+                        const postCarousel = document.createElement('div');
+                        postCarousel.classList.add('post-carousel', 'js-flickity');
+                        postCarousel.setAttribute('data-flickity-options', '{"wrapAround": true}');
+
+                        post.images.forEach(imageSrc => {
+                            const carouselCell = document.createElement('div');
+                            carouselCell.classList.add('carousel-cell');
+
+                            const postImage = document.createElement('img');
+                            postImage.src = imageSrc;
+                            postImage.alt = 'Post Image';
+                            postImage.classList.add('popup-trigger');
+
+                            carouselCell.appendChild(postImage);
+                            postCarousel.appendChild(carouselCell);
+                        });
+
+                        const postFooter = document.createElement('div');
+                        postFooter.classList.add('post-footer');
+
+                        const likes = document.createElement('div');
+                        likes.classList.add('likes');
+                        likes.textContent = `${post.likes} likes`;
+
+                        const caption = document.createElement('div');
+                        caption.classList.add('caption');
+                        caption.innerHTML = `<span class="username">${post.username}</span> ${post.caption}`;
+
+                        const commentsIcon = document.createElement('span');
+                        commentsIcon.classList.add('comments-icon');
+                        commentsIcon.innerHTML = '💬';
+                        commentsIcon.addEventListener('click', () => openComments(post.commentsList)); // Open modal with post's comments
+
+                        postFooter.appendChild(likes);
+                        postFooter.appendChild(caption);
+                        postFooter.appendChild(commentsIcon);
+
+                        postElement.appendChild(postHeader);
+                        postElement.appendChild(postCarousel);
+                        postElement.appendChild(postFooter);
+
+                        // Append the post to the feed container
+                        feedContainer.appendChild(postElement);
+
+                        // Reinitialize Flickity for new posts
+                        new Flickity(postCarousel, {
+                            wrapAround: true
+                        });
+
+                        // Add event listeners for popup triggers
+                        const triggers = postElement.querySelectorAll('.popup-trigger');
+                        triggers.forEach(trigger => {
+                            trigger.addEventListener('click', function() {
+                                const imgSrc = this.src;
+                                popupImage.src = imgSrc;
+                                popup.classList.add('show');
+                                popup.style.display = 'flex';
+                            });
+                        });
+                    });
+                })
+                               .catch(error => {
+                    console.error('Error fetching posts:', error);
+                });
+        });
+    </script>
+</body>
+</html>
