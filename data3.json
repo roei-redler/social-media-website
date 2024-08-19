@@ -1,0 +1,144 @@
+{
+  "socialMediaPosts": {
+    "instagramPosts": [
+      {
+        "username": "travel_lover",
+        "userId": "traveller987",
+        "profileImage": "https://img.freepik.com/premium-photo/blogger-smiled-enthusiastically-as-she-captured-perfect-selfie_727137-18363.jpg?size=626&ext=jpg&ga=GA1.1.2004651130.1723324224&semt=ais_hybrid",
+        "images": [
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp2780909.jpg&f=1&nofb=1&ipt=ba569fea12e9906c1cc3a117ce2a707f2c03bd3c56fda4b7b94125c58168c453&ipo=images",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.vS0hnvg05rmzzKcjoMAafAHaE8%26pid%3DApi&f=1&ipt=9338a14036c3f724f3791df06b046f168c8b1be79d739f620ac8aa47bb653356&ipo=images",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc8.alamy.com%2Fcomp%2FKHF9MX%2Fprague-top-view-KHF9MX.jpg&f=1&nofb=1&ipt=94b104095981c5f7fbd092d8f5392c0fd6bd02a8dce82708738e197ebc89cbe7&ipo=images"
+        ],
+        "caption": "Wanderlust in full swing! 🌍 #TravelDiaries #Wanderlust",
+        "time": "10:00 AM",
+        "dateCreated": "2024-08-05",
+        "dateModified": "2024-08-07",
+        "likes": 1120,
+        "comments": 45,
+        "location": "Paris, France",
+        "commentsList": [
+          {
+            "username": "travel_lover",
+            "comment": "Stunning capture! Paris never looked better. 📸",
+            "time": "11:00 AM",
+            "dateCreated": "2024-08-05",
+            "userId": "traveller987",
+            "image": "https://img.freepik.com/free-photo/portrait-beautiful-woman-home_23-2149122066.jpg?size=626&ext=jpg"
+          },
+          {
+            "username": "travel_lover",
+            "comment": "I need to visit this place! 😍",
+            "time": "11:30 AM",
+            "dateCreated": "2024-08-05",
+            "userId": "traveller987",
+            "image": "https://img.freepik.com/free-photo/modern-woman-taking-selfie_23-2147893976.jpg?size=626&ext=jpg"
+          },
+          {
+            "username": "travel_lover",
+            "comment": "The lighting in this photo is perfect! 🌅",
+            "time": "12:00 PM",
+            "dateCreated": "2024-08-05",
+            "userId": "traveller987",
+            "image": "https://img.freepik.com/free-photo/handsome-man-outdoors-portrait_158595-3560.jpg?size=626&ext=jpg"
+          },
+          {
+            "username": "travel_lover",
+            "comment": "Paris is always a good idea. 🥂",
+            "time": "12:15 PM",
+            "dateCreated": "2024-08-05",
+            "userId": "traveller987",
+            "image": "https://img.freepik.com/free-photo/close-up-smiley-woman_23-2148878231.jpg?size=626&ext=jpg"
+          },
+          {
+            "username": "travel_lover",
+            "comment": "The vibe is just amazing! ✨",
+            "time": "12:45 PM",
+            "dateCreated": "2024-08-05",
+            "userId": "traveller987",
+            "image": "https://img.freepik.com/free-photo/portrait-content-elegant-man_23-2147689111.jpg?size=626&ext=jpg"
+          },
+          {
+            "username": "travel_lover",
+            "comment": "I love the historical feel of this shot. 📜",
+            "time": "1:00 PM",
+            "dateCreated": "2024-08-05",
+            "userId": "traveller987",
+            "image": "https://img.freepik.com/free-photo/handsome-man-outdoors-portrait_158595-3560.jpg?size=626&ext=jpg"
+          },
+          {
+            "username": "travel_lover",
+            "comment": "Now I’m craving a croissant. 🥐",
+            "time": "1:30 PM",
+            "dateCreated": "2024-08-05",
+            "userId": "traveller987",
+            "image": "https://img.freepik.com/free-photo/portrait-smiley-woman_23-2148827181.jpg?size=626&ext=jpg"
+          },
+          {
+            "username": "travel_lover",
+            "comment": "This photo is a piece of art! 🎨",
+            "time": "2:00 PM",
+            "dateCreated": "2024-08-05",
+            "userId": "traveller987",
+            "image": "https://img.freepik.com/free-photo/portrait-smiling-man-looking-camera_23-2148164269.jpg?size=626&ext=jpg"
+          }
+        ],
+        "likeList": [
+          {
+            "username": "travel_guru",
+            "userId": "user101",
+            "time": "10:15 AM",
+            "dateCreated": "2024-08-05"
+          },
+          {
+            "username": "world_explorer",
+            "userId": "user102",
+            "time": "10:20 AM",
+            "dateCreated": "2024-08-05"
+          }
+        ]
+      },
+      {
+        "username": "foodie_heaven",
+        "userId": "foodie543",
+        "profileImage": "https://img.freepik.com/premium-photo/abstract-clip-art-icons_1197721-90873.jpg?size=626&ext=jpg&ga=GA1.1.2004651130.1723324224&semt=ais_hybrid",
+        "image": "https://img.freepik.com/free-photo/mid-shot-woman-talking-phone-table_23-2148751522.jpg?t=st=1723326430~exp=1723330030~hmac=b3dbc98fa4b79ce192b73530afa36bc53461d0a4e87745f2c986d6633686e4bb&w=1480",
+        "caption": "Best brunch spot in NYC! 🥞 #Foodie #Brunch",
+        "time": "09:00 AM",
+        "dateCreated": "2024-08-06",
+        "dateModified": "2024-08-08",
+        "likes": 895,
+        "comments": 28,
+        "location": "New York, USA",
+        "commentsList": [
+          {
+            "username": "nyc_eats",
+            "comment": "Yum! That looks delicious! 😋",
+            "time": "09:15 AM",
+            "dateCreated": "2024-08-06"
+          },
+          {
+            "username": "traveler_guy",
+            "comment": "Adding this to my must-visit list!",
+            "time": "09:45 AM",
+            "dateCreated": "2024-08-06"
+          }
+        ],
+        "likeList": [
+          {
+            "username": "brunchlover",
+            "userId": "user103",
+            "time": "09:10 AM",
+            "dateCreated": "2024-08-06"
+          },
+          {
+            "username": "city_foodie",
+            "userId": "user104",
+            "time": "09:25 AM",
+            "dateCreated": "2024-08-06"
+          }
+        ]
+      }
+    ]
+  }
+}
